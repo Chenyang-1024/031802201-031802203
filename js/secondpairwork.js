@@ -1,0 +1,6 @@
+$('#jstree').jstree({
+    'core' : {
+        'data' : 
+            
+    }
+})
