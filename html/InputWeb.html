@@ -11,18 +11,20 @@
 </head>
 
 <body>
-    <div >
-        <form class="center-in-center" align=center action="#">
+    <div class="center-in-center" align=center>
+        <!-- <form class="center-in-center" align=center action="#"> -->
             <!-- 支持上传文本文件作为输入 -->
             <textarea id="textarea" align=center placeholder="请输入学术家族树文本" rows="5" cols="40"></textarea>
-            <input type="file" id="files" style="color: red;">
             <br />
-            <button id="btn" class="FONT" onclick="textResolve()">确认</button>
-            
-        </form>
+            <input type="file" id="files" style="color: red;">
+            <button id="btn" class="FONT" onclick="textResolve()">创建</button>
+            <!-- <a href="./TreeWeb.html" target="_blank"><button>创建</button></a> -->
+            <!-- <a onclick="window.location = './TreeWeb.html'" href="#" target="_blank"><button>创建</button></a> -->
+
+        <!-- </form> -->
     </div>
     
-    <div id="maketree"></div>
+    <!-- <div id="maketree"></div> -->
 
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -48,7 +50,7 @@
             var root = "#",
                 jarr = [],
                 skill = [];
-            var myJSON = [];
+            // var myJSON = [];
             var text = T.split('\n\n\n');
             // console.log(text);
             for (let i = 0; i < text.length; i++) {
@@ -101,12 +103,7 @@
             localStorage.setItem("jsonString", myJSON);
             window.location.href = "TreeWeb.html?jsonString=" + escape(myJSON);
         };
-
-        // $(function () {
-        //     console.log(myJSON);
-        // });
-        
-        
+ 
         // function creat (jsdata) {
             // $('#maketree').jstree({
             //     "core" : {
