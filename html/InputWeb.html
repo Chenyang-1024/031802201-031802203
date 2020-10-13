@@ -18,9 +18,6 @@
             <br />
             <input type="file" id="files" style="color: red;">
             <button id="btn" class="FONT" onclick="textResolve()">创建</button>
-            <!-- <a href="./TreeWeb.html" target="_blank"><button>创建</button></a> -->
-            <!-- <a onclick="window.location = './TreeWeb.html'" href="#" target="_blank"><button>创建</button></a> -->
-
         <!-- </form> -->
     </div>
     
@@ -29,9 +26,29 @@
     <script src="../js/jquery.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../jstree/jstree.js"></script>
-    <script>
-        
 
+    <!-- 获取上传 txt 文件内容 -->
+    <script>
+        var inputElement = document.getElementById("files");
+        inputElement.addEventListener("change", handleFiles, false);
+        function handleFiles() {
+            var selectedFile = document.getElementById("files").files[0];//获取读取的File对象
+            // var name = selectedFile.name;//读取选中文件的文件名
+            // var size = selectedFile.size;//读取选中文件的大小
+            // console.log("文件名:"+name+"大小："+size);
+            var reader = new FileReader();//这里是核心！！！读取操作就是由它完成的。
+            reader.readAsText(selectedFile, 'utf-8');//读取文件的内容
+            reader.onload = function () {
+                var docText = this.result;
+                // console.log(docText);
+                // 实现一半。。。
+            };
+            
+        }
+    </script>
+
+    <script>    
+        // JS 数组转化为 JSON 字符串
         function tojson (arr) {
             if (!arr.length) {
                 return null;
@@ -45,8 +62,11 @@
             return JSON.stringify(array);
         };
 
+        // 文本分割及有效信息的提取
         function textResolve () {
-            var T = $('textarea').val();
+            
+            var T = $('#textarea').val();
+            
             var root = "#",
                 jarr = [],
                 skill = [];
@@ -103,6 +123,7 @@
             localStorage.setItem("jsonString", myJSON);
             window.location.href = "TreeWeb.html?jsonString=" + escape(myJSON);
         };
+
  
         // function creat (jsdata) {
             // $('#maketree').jstree({
